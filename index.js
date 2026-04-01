@@ -4,14 +4,14 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import http from "http";
 import chat from "./routes/chat.js";
-import { initSocket } from "./socket/index.js"; 
+import { initSocket } from "./socket/index.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
 
-console.log("process.env.FRONTENED_URL",process.env.FRONTENED_URL);
+console.log("process.env.FRONTENED_URL", process.env.FRONTENED_URL);
 
 app.use(cors({
   origin: process.env.FRONTENED_URL, // ✅ Allow Next.js
@@ -22,7 +22,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
-app.use("/api/chat",chat);
+app.use("/api/chat", chat);
 
 
 // DB
@@ -31,6 +31,12 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch(console.error);
 
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Backend is running",
+  });
+});
 
 // 👇 CREATE HTTP SERVER
 const server = http.createServer(app);
