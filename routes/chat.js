@@ -10,9 +10,9 @@ import {
 
 const chat = express.Router();
 
-chat.get("/",    protect, getChats);
-chat.post("/create-chat",   protect, createChat);
-chat.post("/create-chat/job",   protect, createChatByJob);
+chat.get("/",protect, getChats);
+chat.post("/create-chat",protect, createChat);
+chat.post("/create-chat/job",protect, createChatByJob);
 chat.get("/:chatId",  protect, getChatById);
 chat.post("/:chatId", sendMessage);
 

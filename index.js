@@ -17,7 +17,7 @@ app.use(cors({
   origin: process.env.FRONTENED_URL, // ✅ Allow Next.js
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "x-user"], // ✅ Allow x-user header
+  allowedHeaders: ["Content-Type", "x-user-id"], // ✅ Allow x-user header
 }));
 
 app.use(express.json());

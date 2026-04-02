@@ -18,6 +18,8 @@ export function initSocket(server) {
   io.use((socket, next) => {
     const token = socket.handshake.auth.token;
     console.log("token:", token);
+    console.log("token received:", JSON.stringify(token)); // 👈 add this
+  console.log("token.id:", token?.id);       
 
     if (!token) return next(new Error("No token"));
 
